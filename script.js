@@ -80,7 +80,7 @@ function liftieTest(arr) {
 
 
 function mapsTest() {
-    var apiKey = 'AIzaSyCp8r9ykeHiZkwSGPBhA6nn5ZDjvlOUScc';
+    var apiKey = secrets.GOOGLE_API_KEY;
     var queryURL = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/directions/json?origin=' + userLat + ',' + userLon + '&destination=' + lat + ',' + lon + '&key=' + apiKey
 
     $.ajax({
