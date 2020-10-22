@@ -12,6 +12,35 @@ var userLon = 0;
 var lat = 0;
 var lon = 0;
 
+var resortObj = [{
+
+}];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function liftieTest(arr) {
     
 
@@ -24,8 +53,22 @@ function liftieTest(arr) {
         console.log(response);
         lat = response.ll[1];
         lon = response.ll[0];
-        console.log(lat);
-        console.log(lon);
+        resortObj.push({
+            name: response.name,
+            lat: response.ll[1],
+            lon: response.ll[0],
+            weather: {
+                conditions: response.weather.conditions,
+                updateDate: response.weather.date,
+                text: response.weather.text
+            },
+            lifts: {
+                open: response.lifts.open,
+                closed: response.lifts.closed,
+                liftStatus: response.lifts.status
+            }
+        });
+        console.log(resortObj);
         mapsTest();
     });
 }
