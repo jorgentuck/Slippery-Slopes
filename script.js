@@ -1,3 +1,5 @@
+$( document ).ready(function() {
+
 var skiResorts = ['snowbird'
     , 'alta'
     , 'brianhead'
@@ -5,7 +7,14 @@ var skiResorts = ['snowbird'
     , 'deer-valley'
     , 'parkcity'
     , 'solitude'];
+var userLat = 0;
+var userLon = 0;
+var lat = 0;
+var lon = 0;
+
 function liftieTest(arr) {
+    
+
     for(var i = 0; i < arr.length; i++){
 
     $.ajax({
@@ -13,18 +22,23 @@ function liftieTest(arr) {
         method: "GET"
     }).then(function (response) {
         console.log(response);
+        lat = response.ll[1];
+        lon = response.ll[0];
+        console.log(lat);
+        console.log(lon);
+        mapsTest();
     });
 }
 };
 
-liftieTest(skiResorts);
+
 
 
 
 
 function mapsTest() {
     var apiKey = 'AIzaSyCp8r9ykeHiZkwSGPBhA6nn5ZDjvlOUScc';
-    var queryURL = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=ski%20resort&inputtype=textquery&locationbias=circle:100000@40.3896709,-111.8292264&fields=name,formatted_address&key=' + apiKey
+    var queryURL = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/directions/json?origin=' + userLat + ',' + userLon + '&destination=' + lat + ',' + lon + '&key=' + apiKey
 
     $.ajax({
         url: queryURL,
@@ -53,3 +67,18 @@ function mapsTest() {
 
 
 
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(setPosition);
+  } 
+}
+
+function setPosition(position) {
+  userLat = position.coords.latitude;
+  userLon = position.coords.longitude;
+  liftieTest(skiResorts);
+}
+getLocation();
+
+});
