@@ -1,8 +1,8 @@
 body {
     background-image: url(assets/empty-chair-ski-lift-on-bright-winter-day_free_stock_photos_picjumbo_P1010062-2210x1475.jpg);
     background-color: #cccccc;
-    height: 100vh;
-    background-position: center;
+    height: 100%;
+    width: 100%;
     background-repeat: no-repeat;
     min-height: 100%;
     position: relative;
@@ -44,3 +44,26 @@ img.map {
     display: inline-block;
     
 }
+
+.collapsible {
+    color: rgb(48, 119, 141);
+    border-radius: 6px;
+    border-color: white;
+    margin-top: 5px;
+    width: 100%;
+    text-align: left;
+    background-color: rgb(160, 160, 160);
+    display: inline-block;
+    
+    
+}
+ .btn-group {
+     width: 100%;
+     text-align: left;
+     
+ }
+
+ .btn {
+     width: 100%;
+     text-align: left;
+ }
