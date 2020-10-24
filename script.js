@@ -14,9 +14,9 @@ $(document).ready(function () {
     var lon = 0;
     var index = 0;
     var resortObj = [];
-    // var resortObj2 = [{
 
-    // }];
+    var cardEl = $('#cards');
+
 
     function liftieTest(arr) {
 
@@ -63,14 +63,13 @@ $(document).ready(function () {
 
     function mapsTest(i) {
         var apiKey = secrets.GOOGLE_API_KEY;
-        
         var queryURL = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/directions/json?origin=' + userLat + ',' + userLon + '&destination=' + lat + ',' + lon + '&key=' + apiKey
 
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            console.log(response);
+            
             resortObj[i].destinationlat = response.routes[0].legs[0].end_location.lat;
             resortObj[i].destinationlon = response.routes[0].legs[0].end_location.lng;
             resortObj[i].distanceText = response.routes[0].legs[0].distance.text;
@@ -81,7 +80,7 @@ $(document).ready(function () {
 
             }
         });
-        console.log(resortObj);
+        
     };
 
     // mapsTest();
@@ -115,6 +114,11 @@ $(document).ready(function () {
         userLon = position.coords.longitude;
         liftieTest(skiResorts);
     }
-    getLocation();
+
+    $('.loc-link').on('click', function(event){
+        cardEl.removeClass('d-none');
+        getLocation();
+    })
+    
 
 });
