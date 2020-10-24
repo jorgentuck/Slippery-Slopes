@@ -67,3 +67,11 @@ img.map {
      width: 100%;
      text-align: left;
  }
+
+ .col1 {
+     text-align: center;
+ }
+
+ .col2 {
+     text-align: center;
+ }
