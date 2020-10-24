@@ -30,7 +30,7 @@ $(document).ready(function () {
                 method: "GET"
             }).then(function (response) {
 
-
+                console.log(response.name);
                 lat = response.ll[1];
                 lon = response.ll[0];
                 // push object into array
@@ -49,18 +49,37 @@ $(document).ready(function () {
                         liftStatus: response.lifts.status
                     }
                 })
-                // console.log(resortObj[index].name);
-                // console.log(index + " - 7 7 times");
-                $('#btn' + (index + 1)).text((resortObj[index].name.toString()));
+                console.log(resortObj[index].name);
+               
                 index++;
-                console.log(index)
+                
             });
-            // console.log(resortObj);
         }
     };
 
 
+    $(document).ajaxStop(function () {
+        console.log('finished')
+        console.log(resortObj);
+        resortObj.sort(compareName)
+        for (var i = 0; i < resortObj.length; i++) {
+            $('#btn' + (i + 1)).text((resortObj[i].name.toString()));
+        }
+        console.log(resortObj);
+    });
 
+    function compareName(a, b) {
+        const nameA = a.name.toLowerCase();
+        const nameB = b.name.toLowerCase();
+
+        let comparison = 0;
+        if (nameA > nameB) {
+            comparison = 1;
+        } else if (nameA < nameB) {
+            comparison = -1;
+        }
+        return comparison;
+    }
 
 
 
@@ -90,22 +109,6 @@ $(document).ready(function () {
         }
     };
 
-    // mapsTest();
-
-
-
-
-    // function liftieTest(){
-
-    // $.ajax({
-    //     url: "https://cors-anywhere.herokuapp.com/https://liftie.info/api/resort/brighton",
-    //     method: "GET"
-    // }).then(function(response) {
-    //       console.log(response);
-    // });
-    // };
-
-    // liftieTest();
 
 
 
@@ -119,7 +122,6 @@ $(document).ready(function () {
     function setPosition(position) {
         userLat = position.coords.latitude;
         userLon = position.coords.longitude;
-        // liftieTest(skiResorts);
         mapsTest(resortObj);
     }
 
