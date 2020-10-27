@@ -43,7 +43,7 @@ img.map {
     
 }
 
-.loc-link {
+#search {
     border: 2px solid;
     background-color: rgb(32, 160, 32);
     font-size: 18px ;
@@ -85,4 +85,11 @@ img.map {
 
  .col2 {
      text-align: center;
+
+ }
+
+ .containerTop {
+     margin: 10px 75px;
+     padding: 15px;
+
  }
