@@ -139,8 +139,12 @@ $(document).ready(function () {
     // color duration based on traffic
     function traffic() {
         for(var i = 0; i < resortObj.length; i++){
-            if(parseInt(resortObj[i].trafficValue) < (parseInt(resortObj[i].durationValue) + 50)){
+            if(parseInt(resortObj[i].trafficValue) < (parseInt(resortObj[i].durationValue) * 1.10)){
                 $('[data-name="' + resortObj[i].name + '"]').addClass('text-success')
+            } else if(parseInt(resortObj[i].trafficValue) < (parseInt(resortObj[i].durationValue) * 1.25)){
+                $('[data-name="' + resortObj[i].name + '"]').addClass('text-warning')
+            } else {
+                $('[data-name="' + resortObj[i].name + '"]').addClass('text-danger')
             }
         }
     };
