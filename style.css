@@ -13,6 +13,17 @@ body {
     transform: translate(-50%, -50%);
     color: rgb(0, 0, 0);
 }
+.jumbotron {
+    background-color: blueviolet;
+    text-align: Center;
+    font-style: italic; 
+}
+
+.Brighton { 
+    height: 50px;
+    width: 50px; 
+    float: right;
+}
 
 img.map {
     height: 100%;
