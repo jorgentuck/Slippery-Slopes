@@ -2,14 +2,22 @@ $(document).ready(function () {
 
     // Variables
     // resort array
-    var skiResorts = ['snowbird'
-        , 'alta'
-        , 'brianhead'
-        , 'brighton'
-        , 'deer-valley'
-        , 'parkcity'
-        , 'solitude'
-        , 'snowbasin'];
+    var skiResorts = [{name:'snowbird',
+    favorite: false}
+        , {name:'alta',
+    favorite: false}
+        , {name:'brianhead',
+    favorite: false}
+        , {name:'brighton',
+    favorite: false}
+        , {name:'deer-valley',
+    favorite: false}
+        , {name:'parkcity',
+    favorite: false}
+        , {name:'solitude',
+    favorite: false}
+        , {name:'snowbasin',
+        favorite: false}];
     // array to store API responses
     var resortObj = [];
     // lat and lon for the users location
@@ -25,7 +33,7 @@ $(document).ready(function () {
     function liftieAPI(arr) {
         for (var i = 0; i < arr.length; i++) {
             $.ajax({
-                url: "https://cors-anywhere.herokuapp.com/https://liftie.info/api/resort/" + arr[i],
+                url: "https://cors-anywhere.herokuapp.com/https://liftie.info/api/resort/" + arr[i].name,
                 // url: "https://liftie.info/api/resort/" + arr[i],
                 method: "GET",
             }).then(function (response) {
