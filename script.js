@@ -125,16 +125,23 @@ $(document).ready(function () {
         for(var i = 0; i < resortObj.length; i++){
             var id = $('[data-name="' + resortObj[i].name + '"]').attr('id');
             id = id.substring(3, id.length);
-            $('#drop' + id).text(resortObj[i].lifts.liftStatus);
-            console.log('object: ' + JSON.stringify(resortObj[i].lifts.liftStatus));
+
+            // $('#drop' + id).text(resortObj[i].lifts.liftStatus[0]);
+            $('#drop' + id).html('<table><tbody><tr><th>Lift</th><th>Status</th></tr><tr></tr></tbody></table>');
+
+            console.log('object: ' + JSON.stringify(resortObj[i].lifts));
         }
     };
 
     // color duration based on traffic
     function traffic() {
         for(var i = 0; i < resortObj.length; i++){
-            if(parseInt(resortObj[i].trafficValue) < (parseInt(resortObj[i].durationValue) + 50)){
+            if(parseInt(resortObj[i].trafficValue) < (parseInt(resortObj[i].durationValue) * 1.10)){
                 $('[data-name="' + resortObj[i].name + '"]').addClass('text-success')
+            } else if(parseInt(resortObj[i].trafficValue) < (parseInt(resortObj[i].durationValue) * 1.25)){
+                $('[data-name="' + resortObj[i].name + '"]').addClass('text-warning')
+            } else {
+                $('[data-name="' + resortObj[i].name + '"]').addClass('text-danger')
             }
         }
     };
