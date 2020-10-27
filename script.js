@@ -61,7 +61,8 @@ $(document).ready(function () {
             comparison = -1;
         }
         return comparison;
-    }
+
+    };
 
     // function to reorder the objects an array based on distance
     function compareDistance(a, b) {
@@ -75,17 +76,17 @@ $(document).ready(function () {
             comparison = -1;
         }
         return comparison;
-    }
+    };
+
 
     // Google directions API call
     function directionsAPI(arr) {
         initLoad = false;
-        // var apiKey = secrets.GOOGLE_API_KEY;
-        var apiKey = 'AIzaSyCMs7jho-f0skTWHRE_xRXHjwh1cRR6i7o';
-        // var queryURL = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/directions/json?origin=' + userLat + ',' + userLon + '&destination=' + lat + ',' + lon + '&key=' + apiKey
-
+        var apiKey = config.googleAPI;
         for (var i = 0; i < arr.length; i++) {
-            var queryURL = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/directions/json?origin=' + userLat + ',' + userLon + '&destination=' + resortObj[i].lat + ',' + resortObj[i].lon + '&key=' + apiKey
+
+            var queryURL = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/directions/json?origin=' + userLat + ',' + userLon + '&destination=' + resortObj[i].lat + ',' + resortObj[i].lon + '&departure_time=now&key=' + apiKey
+
             $.ajax({
                 url: queryURL,
                 method: "GET"
@@ -98,10 +99,15 @@ $(document).ready(function () {
                         resortObj[j].distanceValue = response.routes[0].legs[0].distance.value;
                         resortObj[j].durationText = response.routes[0].legs[0].duration.text;
                         resortObj[j].durationValue = response.routes[0].legs[0].duration.value;
+
+                        resortObj[j].trafficText = response.routes[0].legs[0].duration_in_traffic.text;
+                        resortObj[j].trafficValue = response.routes[0].legs[0].duration_in_traffic.value;
                     } else {
-                        console.log(response.routes[0].legs[0].end_location.lat);
+                        // console.log(response.routes[0].legs[0].end_location.lat);
+
                     }
                 }
+                console.log(response);
             });
         }
     };
@@ -111,28 +117,52 @@ $(document).ready(function () {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(setPosition);
         }
-    }
+    };
 
     // set users location to global variables and trigger the Google directions API call function
     function setPosition(position) {
         userLat = position.coords.latitude;
         userLon = position.coords.longitude;
         directionsAPI(resortObj);
-    }
+    };
+
+    // function to display resort stats
+    function resortStats() {
+        for(var i = 0; i < resortObj.length; i++){
+            var id = $('[data-name="' + resortObj[i].name + '"]').attr('id');
+            id = id.substring(3, id.length);
+            $('#drop' + id).text(resortObj[i].lifts.liftStatus);
+            console.log('object: ' + JSON.stringify(resortObj[i].lifts.liftStatus));
+        }
+    };
+
+    // color duration based on traffic
+    function traffic() {
+        for(var i = 0; i < resortObj.length; i++){
+            if(parseInt(resortObj[i].trafficValue) < (parseInt(resortObj[i].durationValue) + 50)){
+                $('[data-name="' + resortObj[i].name + '"]').addClass('text-success')
+            }
+        }
+    };
+
 
     // what to do when all running ajax calls finish
     $(document).ajaxStop(function () {
         if (initLoad) {
             resortObj.sort(compareName)
             for (var i = 0; i < resortObj.length; i++) {
-                $('#btn' + (i + 1)).text((resortObj[i].name.toString()));
+                $('#btn' + (i + 1)).text((resortObj[i].name.toString())).attr('data-name',resortObj[i].name);
+
             }
         } else {
             resortObj.sort(compareDistance)
             for (var i = 0; i < resortObj.length; i++) {
-                $('#btn' + (i + 1)).text((resortObj[i].name.toString()));
+
+                $('#btn' + (i + 1)).text((resortObj[i].name.toString() + ' - ' + resortObj[i].trafficText.toString())).attr('data-name',resortObj[i].name);
+                traffic();
             }
         }
+        resortStats();
     });
 
     // click events
@@ -140,7 +170,8 @@ $(document).ready(function () {
     $('.loc-link').on('click', function (event) {
         // cardEl.removeClass('d-none');
         getLocation();
-    })
+    });
+
 
 
     // runs after the page loads
