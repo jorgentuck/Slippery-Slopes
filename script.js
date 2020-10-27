@@ -141,9 +141,15 @@ $(document).ready(function () {
             id = id.substring(3, id.length);
 
             // $('#drop' + id).text(resortObj[i].lifts.liftStatus[0]);
-            $('#drop' + id).html('<table><tbody><tr><th>Lift</th><th>Status</th></tr><tr></tr></tbody></table>');
-
-            console.log('object: ' + JSON.stringify(resortObj[i].lifts));
+            var status = $('<table><tbody id="' + resortObj[i].name + 'Status"><tr><th>Lift</th><th>Status</th></tr>');
+            var end = $('</tbody></table>')
+            
+            $.each(resortObj[i].lifts.liftStatus, function(key, value) {
+                // console.log(key + ' is ' + value);
+                status.append('<tr><td>' + key + '</td><td>' + value + '</td></tr>')
+            });
+            console.log(status);
+            $('#status' + id).html(status + end);
         }
     };
 
@@ -182,7 +188,7 @@ $(document).ready(function () {
 
     // click events
     // search by location button click
-    $('.loc-link').on('click', function (event) {
+    $('#search').on('click', function (event) {
         // cardEl.removeClass('d-none');
         getLocation();
     });
