@@ -61,6 +61,7 @@ $(document).ready(function () {
             comparison = -1;
         }
         return comparison;
+
     };
 
     // function to reorder the objects an array based on distance
@@ -77,12 +78,15 @@ $(document).ready(function () {
         return comparison;
     };
 
+
     // Google directions API call
     function directionsAPI(arr) {
         initLoad = false;
         var apiKey = config.googleAPI;
         for (var i = 0; i < arr.length; i++) {
+
             var queryURL = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/directions/json?origin=' + userLat + ',' + userLon + '&destination=' + resortObj[i].lat + ',' + resortObj[i].lon + '&departure_time=now&key=' + apiKey
+
             $.ajax({
                 url: queryURL,
                 method: "GET"
@@ -95,10 +99,12 @@ $(document).ready(function () {
                         resortObj[j].distanceValue = response.routes[0].legs[0].distance.value;
                         resortObj[j].durationText = response.routes[0].legs[0].duration.text;
                         resortObj[j].durationValue = response.routes[0].legs[0].duration.value;
+
                         resortObj[j].trafficText = response.routes[0].legs[0].duration_in_traffic.text;
                         resortObj[j].trafficValue = response.routes[0].legs[0].duration_in_traffic.value;
                     } else {
                         // console.log(response.routes[0].legs[0].end_location.lat);
+
                     }
                 }
                 console.log(response);
@@ -139,16 +145,19 @@ $(document).ready(function () {
         }
     };
 
+
     // what to do when all running ajax calls finish
     $(document).ajaxStop(function () {
         if (initLoad) {
             resortObj.sort(compareName)
             for (var i = 0; i < resortObj.length; i++) {
                 $('#btn' + (i + 1)).text((resortObj[i].name.toString())).attr('data-name',resortObj[i].name);
+
             }
         } else {
             resortObj.sort(compareDistance)
             for (var i = 0; i < resortObj.length; i++) {
+
                 $('#btn' + (i + 1)).text((resortObj[i].name.toString() + ' - ' + resortObj[i].trafficText.toString())).attr('data-name',resortObj[i].name);
                 traffic();
             }
@@ -162,6 +171,7 @@ $(document).ready(function () {
         // cardEl.removeClass('d-none');
         getLocation();
     });
+
 
 
     // runs after the page loads
