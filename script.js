@@ -2,14 +2,22 @@ $(document).ready(function () {
 
     // Variables
     // resort array
-    var skiResorts = ['snowbird'
-        , 'alta'
-        , 'brianhead'
-        , 'brighton'
-        , 'deer-valley'
-        , 'parkcity'
-        , 'solitude'
-        , 'snowbasin'];
+    var skiResorts = [{name:'snowbird',
+    favorite: false}
+        , {name:'alta',
+    favorite: false}
+        , {name:'brianhead',
+    favorite: false}
+        , {name:'brighton',
+    favorite: false}
+        , {name:'deer-valley',
+    favorite: false}
+        , {name:'parkcity',
+    favorite: false}
+        , {name:'solitude',
+    favorite: false}
+        , {name:'snowbasin',
+        favorite: false}];
     // array to store API responses
     var resortObj = [];
     // lat and lon for the users location
@@ -25,7 +33,7 @@ $(document).ready(function () {
     function liftieAPI(arr) {
         for (var i = 0; i < arr.length; i++) {
             $.ajax({
-                url: "https://cors-anywhere.herokuapp.com/https://liftie.info/api/resort/" + arr[i],
+                url: "https://cors-anywhere.herokuapp.com/https://liftie.info/api/resort/" + arr[i].name,
                 // url: "https://liftie.info/api/resort/" + arr[i],
                 method: "GET",
             }).then(function (response) {
@@ -131,8 +139,11 @@ $(document).ready(function () {
         for(var i = 0; i < resortObj.length; i++){
             var id = $('[data-name="' + resortObj[i].name + '"]').attr('id');
             id = id.substring(3, id.length);
-            $('#drop' + id).text(resortObj[i].lifts.liftStatus);
-            console.log('object: ' + JSON.stringify(resortObj[i].lifts.liftStatus));
+
+            // $('#drop' + id).text(resortObj[i].lifts.liftStatus[0]);
+            $('#drop' + id).html('<table><tbody><tr><th>Lift</th><th>Status</th></tr><tr></tr></tbody></table>');
+
+            console.log('object: ' + JSON.stringify(resortObj[i].lifts));
         }
     };
 
