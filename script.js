@@ -172,16 +172,16 @@ $(document).ready(function () {
         if (initLoad) {
             resortObj.sort(compareName)
             for (var i = 0; i < resortObj.length; i++) {
-                $('#btn' + (i + 1)).text((resortObj[i].name.toString())).attr('data-name',resortObj[i].name);
-                $('#icon' + (i + 1)).html('<img id="' + resortObj[i].name + 'Icon" src="assets\\' + resortObj[i].name + '.png"height="50"><br style="clear: both;">');
+                $('#btn' + (i + 1)).attr('data-name',resortObj[i].name).html(resortObj[i].name.toString() + '<img id="' + resortObj[i].name + 'Icon" class="float-right" src="assets\\' + resortObj[i].name + '.png"height="50">');
+                // $('#icon' + (i + 1)).html('<img id="' + resortObj[i].name + 'Icon" src="assets\\' + resortObj[i].name + '.png"height="50"><br style="clear: both;">');
 
             }
         } else {
             resortObj.sort(compareDistance)
             for (var i = 0; i < resortObj.length; i++) {
 
-                $('#btn' + (i + 1)).text((resortObj[i].name.toString() + ' - ' + resortObj[i].trafficText.toString())).attr('data-name',resortObj[i].name);
-                $('#icon' + (i + 1)).html('<img id="' + resortObj[i].name + 'Icon" src="assets\\' + resortObj[i].name + '.png"height="50"><br style="clear: both;">');
+                $('#btn' + (i + 1)).attr('data-name',resortObj[i].name).html(resortObj[i].name.toString() + ' - ' + resortObj[i].trafficText.toString() + '<img id="' + resortObj[i].name + 'Icon" class="float-right" src="assets\\' + resortObj[i].name + '.png"height="50">');
+                // $('#icon' + (i + 1)).html('<img id="' + resortObj[i].name + 'Icon" src="assets\\' + resortObj[i].name + '.png"height="50"><br style="clear: both;">');
                 traffic();
             }
         }
