@@ -2,22 +2,38 @@ $(document).ready(function () {
 
     // Variables
     // resort array
-    var skiResorts = [{name:'snowbird',
-    favorite: false}
-        , {name:'alta',
-    favorite: false}
-        , {name:'brianhead',
-    favorite: false}
-        , {name:'brighton',
-    favorite: false}
-        , {name:'deer-valley',
-    favorite: false}
-        , {name:'parkcity',
-    favorite: false}
-        , {name:'solitude',
-    favorite: false}
-        , {name:'snowbasin',
-        favorite: false}];
+    var skiResorts = JSON.parse(localStorage.getItem("resorts")) || [{
+        name: 'snowbird',
+        favorite: false
+    }
+        , {
+        name: 'alta',
+        favorite: false
+    }
+        , {
+        name: 'brianhead',
+        favorite: false
+    }
+        , {
+        name: 'brighton',
+        favorite: false
+    }
+        , {
+        name: 'deer-valley',
+        favorite: false
+    }
+        , {
+        name: 'parkcity',
+        favorite: false
+    }
+        , {
+        name: 'solitude',
+        favorite: false
+    }
+        , {
+        name: 'snowbasin',
+        favorite: false
+    }];
     // array to store API responses
     var resortObj = [];
     // lat and lon for the users location
@@ -136,15 +152,15 @@ $(document).ready(function () {
 
     // function to display resort stats
     function resortStats() {
-        for(var i = 0; i < resortObj.length; i++){
+        for (var i = 0; i < resortObj.length; i++) {
             var id = $('[data-name="' + resortObj[i].name + '"]').attr('id');
             id = id.substring(3, id.length);
 
             // $('#drop' + id).text(resortObj[i].lifts.liftStatus[0]);
             var status = $('<table><tbody id="' + resortObj[i].name + 'Status"><tr><th>Lift</th><th>Status</th></tr>');
             var end = $('</tbody></table>')
-            
-            $.each(resortObj[i].lifts.liftStatus, function(key, value) {
+
+            $.each(resortObj[i].lifts.liftStatus, function (key, value) {
                 // console.log(key + ' is ' + value);
                 status.append('<tr><td>' + key + '</td><td>' + value + '</td></tr>')
             });
@@ -155,10 +171,10 @@ $(document).ready(function () {
 
     // color duration based on traffic
     function traffic() {
-        for(var i = 0; i < resortObj.length; i++){
-            if(parseInt(resortObj[i].trafficValue) < (parseInt(resortObj[i].durationValue) * 1.1)){
+        for (var i = 0; i < resortObj.length; i++) {
+            if (parseInt(resortObj[i].trafficValue) < (parseInt(resortObj[i].durationValue) * 1.1)) {
                 $('[data-name="' + resortObj[i].name + '"]').addClass('text-success')
-            } else if(parseInt(resortObj[i].trafficValue) < (parseInt(resortObj[i].durationValue) * 1.25)){
+            } else if (parseInt(resortObj[i].trafficValue) < (parseInt(resortObj[i].durationValue) * 1.25)) {
                 $('[data-name="' + resortObj[i].name + '"]').addClass('text-warning')
             } else {
                 $('[data-name="' + resortObj[i].name + '"]').addClass('text-danger')
@@ -166,23 +182,52 @@ $(document).ready(function () {
         }
     };
 
+    // update favorites in the array and save to local storage
+    function fav(name, fav) {
+        if (fav) {
+            for (var i = 0; i < skiResorts.length; i++) {
+                if (name.slice(-4).toLowerCase() === skiResorts[i].name.slice(-4).toLowerCase()) {
+                    skiResorts[i].favorite = true;
+                }
+            }
+            // remove from local storage so we don't have more than one entry
+            localStorage.removeItem("resorts");
+            // re save updated array to local storage
+            localStorage.setItem("resorts", JSON.stringify(skiResorts));
+        } else {
+            for (var i = 0; i < skiResorts.length; i++) {
+                if (name.slice(-4).toLowerCase() === skiResorts[i].name.slice(-4).toLowerCase()) {
+                    skiResorts[i].favorite = false;
+                }
+            }
+            // remove from local storage so we don't have more than one entry
+            localStorage.removeItem("resorts");
+            // re save updated array to local storage
+            localStorage.setItem("resorts", JSON.stringify(skiResorts));
+        }
+    };
 
     // what to do when all running ajax calls finish
     $(document).ajaxStop(function () {
         if (initLoad) {
             resortObj.sort(compareName)
             for (var i = 0; i < resortObj.length; i++) {
-                $('#btn' + (i + 1)).attr('data-name',resortObj[i].name).html('<button class="btn-outline-secondary favorite text-dark mr-3" id="favorite' + (i + 1) + '">&hearts;</button>' + resortObj[i].name.toString() + '<img id="' + resortObj[i].name + 'Icon" class="float-right" src="assets\\' + resortObj[i].name + '.png"height="25">');
-                // $('#icon' + (i + 1)).html('<img id="' + resortObj[i].name + 'Icon" src="assets\\' + resortObj[i].name + '.png"height="50"><br style="clear: both;">');
-
+                $('#btn' + (i + 1)).attr('data-name', resortObj[i].name).html('<button class="btn-outline-secondary favorite text-dark mr-3" data-state="false" data-fav="' + resortObj[i].name + '" id="favorite' + (i + 1) + '">&hearts;</button>' + resortObj[i].name.toString() + '<img id="' + resortObj[i].name + 'Icon" class="float-right" src="assets\\' + resortObj[i].name + '.png"height="25">');
             }
         } else {
             resortObj.sort(compareDistance)
             for (var i = 0; i < resortObj.length; i++) {
-
-                $('#btn' + (i + 1)).attr('data-name',resortObj[i].name).html('<button class="btn-outline-secondary favorite text-dark mr-3" data-name="' + resortObj[i].name + '" id="favorite' + (i + 1) + '">&hearts;</button>' + resortObj[i].name.toString() + ' - ' + resortObj[i].trafficText.toString() + '<img id="' + resortObj[i].name + 'Icon" class="float-right" src="assets\\' + resortObj[i].name + '.png"height="25">');
-                // $('#icon' + (i + 1)).html('<img id="' + resortObj[i].name + 'Icon" src="assets\\' + resortObj[i].name + '.png"height="50"><br style="clear: both;">');
+                $('#btn' + (i + 1)).attr('data-name', resortObj[i].name).html('<button class="btn-outline-secondary favorite text-dark mr-3" data-state="false" data-fav="' + resortObj[i].name + '" id="favorite' + (i + 1) + '">&hearts;</button>' + resortObj[i].name.toString() + ' - ' + resortObj[i].trafficText.toString() + '<img id="' + resortObj[i].name + 'Icon" class="float-right" src="assets\\' + resortObj[i].name + '.png"height="25">');
                 traffic();
+            }
+        }
+        for (var j = 0; j < skiResorts.length; j++) {
+            if (skiResorts[j].favorite) {
+                for (var k = 0; k < resortObj.length; k++) {
+                    if (skiResorts[j].name.slice(-4).toLowerCase() === resortObj[k].name.slice(-4).toLowerCase()) {
+                        $('[data-fav="' + resortObj[k].name + '"]').removeClass('text-dark').addClass('text-danger active');
+                    }
+                }
             }
         }
         resortStats();
@@ -197,6 +242,15 @@ $(document).ready(function () {
 
     $('.dropdown').on('click', '.favorite', function (event) {
         event.stopPropagation();
+        if ($(this).attr('data-state') === 'false') {
+            $(this).removeClass('text-dark').addClass('text-danger active').attr('data-state', 'true');
+            var name = $(this).attr('data-fav');
+            fav(name, true);
+        } else {
+            $(this).addClass('text-dark').removeClass('text-danger active').attr('data-state', 'false');
+            var name = $(this).attr('data-fav');
+            fav(name, false);
+        }
     })
 
     // runs after the page loads
