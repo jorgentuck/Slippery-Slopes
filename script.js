@@ -34,7 +34,7 @@ $(document).ready(function () {
         for (var i = 0; i < arr.length; i++) {
             $.ajax({
                 url: "https://cors-anywhere.herokuapp.com/https://liftie.info/api/resort/" + arr[i].name,
-                // url: "https://liftie.info/api/resort/" + arr[i],
+                // url: "https://liftie.info/api/resort/" + arr[i].name,
                 method: "GET",
             }).then(function (response) {
                 // populate object and push to the array
@@ -156,7 +156,7 @@ $(document).ready(function () {
     // color duration based on traffic
     function traffic() {
         for(var i = 0; i < resortObj.length; i++){
-            if(parseInt(resortObj[i].trafficValue) < (parseInt(resortObj[i].durationValue) * 1.10)){
+            if(parseInt(resortObj[i].trafficValue) < (parseInt(resortObj[i].durationValue) * 1.1)){
                 $('[data-name="' + resortObj[i].name + '"]').addClass('text-success')
             } else if(parseInt(resortObj[i].trafficValue) < (parseInt(resortObj[i].durationValue) * 1.25)){
                 $('[data-name="' + resortObj[i].name + '"]').addClass('text-warning')
@@ -172,7 +172,7 @@ $(document).ready(function () {
         if (initLoad) {
             resortObj.sort(compareName)
             for (var i = 0; i < resortObj.length; i++) {
-                $('#btn' + (i + 1)).attr('data-name',resortObj[i].name).html(resortObj[i].name.toString() + '<img id="' + resortObj[i].name + 'Icon" class="float-right" src="assets\\' + resortObj[i].name + '.png"height="50">');
+                $('#btn' + (i + 1)).attr('data-name',resortObj[i].name).html('<button class="btn-outline-secondary favorite text-dark mr-3" id="favorite' + (i + 1) + '">&hearts;</button>' + resortObj[i].name.toString() + '<img id="' + resortObj[i].name + 'Icon" class="float-right" src="assets\\' + resortObj[i].name + '.png"height="25">');
                 // $('#icon' + (i + 1)).html('<img id="' + resortObj[i].name + 'Icon" src="assets\\' + resortObj[i].name + '.png"height="50"><br style="clear: both;">');
 
             }
@@ -180,7 +180,7 @@ $(document).ready(function () {
             resortObj.sort(compareDistance)
             for (var i = 0; i < resortObj.length; i++) {
 
-                $('#btn' + (i + 1)).attr('data-name',resortObj[i].name).html(resortObj[i].name.toString() + ' - ' + resortObj[i].trafficText.toString() + '<img id="' + resortObj[i].name + 'Icon" class="float-right" src="assets\\' + resortObj[i].name + '.png"height="50">');
+                $('#btn' + (i + 1)).attr('data-name',resortObj[i].name).html('<button class="btn-outline-secondary favorite text-dark mr-3" data-name="' + resortObj[i].name + '" id="favorite' + (i + 1) + '">&hearts;</button>' + resortObj[i].name.toString() + ' - ' + resortObj[i].trafficText.toString() + '<img id="' + resortObj[i].name + 'Icon" class="float-right" src="assets\\' + resortObj[i].name + '.png"height="25">');
                 // $('#icon' + (i + 1)).html('<img id="' + resortObj[i].name + 'Icon" src="assets\\' + resortObj[i].name + '.png"height="50"><br style="clear: both;">');
                 traffic();
             }
@@ -195,7 +195,9 @@ $(document).ready(function () {
         getLocation();
     });
 
-
+    $('.dropdown').on('click', '.favorite', function (event) {
+        event.stopPropagation();
+    })
 
     // runs after the page loads
     liftieAPI(skiResorts);
