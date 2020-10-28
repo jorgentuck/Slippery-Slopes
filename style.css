@@ -13,10 +13,18 @@ body {
     transform: translate(-50%, -50%);
     color: rgb(0, 0, 0);
 }
+
+
 .jumbotron {
-    background-color: blueviolet;
+    background-color:;
     text-align: Center;
     font-style: italic; 
+    font-family: 'Syne Mono', monospace;
+    background-image: url(assets\hamish-weir-h4LzdUvlWdA-unsplash); 
+	background-size: cover; 
+    background-repeat: no-repeat;
+    padding-top: 2%; 
+    padding-bottom: 2%; 
 }
 
 .Brighton { 
