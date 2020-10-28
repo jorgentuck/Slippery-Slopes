@@ -1,30 +1,40 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Slippery Slopes</title>
 
-<head>
-  <title>Slippery Slopes</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">Slippery Slopes</h1>
-    <p class="lead">Traffic, Weather, and Status of Utahs top resorts.</p>
-    <div style=></div>
-    <link href="https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap" rel="stylesheet">
-  </div>
-  </div>
+  <body>
+    <div class="jumbotron jumbotron-fluid">
 
-   <!-- Required meta tags -->
-   <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
- 
-   <!-- Bootstrap CSS -->
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-   <link rel="stylesheet" href="style.css">
-  
-     
-  <!--Navbar Items-->
-  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <h1 class="display-4">Slippery Slopes</h1>
+        <p class="lead">Traffic, Weather, and Status of Utahs top resorts.</p>
+
+
+    </div>
+
+    <!--Navbar Items-->
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
       aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -50,43 +60,52 @@
     </div>
   </nav> -->
 
-  <div class="containerTop">
-    <div class="col-md-3 colBtn">
-  <button id="search" class="loc-link searchBy">Search By Current Location <span class="sr-only"></span></button>
+    <div class="containerTop">
+      <div class="col-md-3 colBtn">
+        <button id="search" class="loc-link searchBy">
+          Search By Current Location <span class="sr-only"></span>
+        </button>
+      </div>
     </div>
-</div>
-<br>
+    <br />
 
-  <!--Cards for API's-->
+    <!--Cards for API's-->
 
-  <div class="container" id="cards">
-    <div class="row">
-
-      <div class="col-md-12">
-
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" id="btn1" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
-            Resorts &hearts;
-          </button>
-          <div class="dropdown-menu">
-            <div class="container">
+    <div class="container" id="cards">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="dropdown">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              id="btn1"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Resorts &hearts;
+            </button>
+            <div class="dropdown-menu">
+              <div class="container">
                 <div class="row">
-                  
-                    <div id="weather1" class="col-md-6 col1">
-                      <h5>Weather</h5>
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus, soluta veritatis reiciendis ducimus ab temporibus rem dicta alias aut maxime consequuntur natus voluptas, modi quo aliquam in harum exercitationem recusandae.
-                        </div>
-                    <div id="status1" class="col-md-6 col2">
-                      <h5>Resort Status</h5>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias dolorum adipisci, ea cum reprehenderit excepturi odit maxime soluta debitis repellendus deserunt dolor ratione voluptatibus magni, nobis necessitatibus recusandae, quia voluptates.
-                        </div>
-                    
-                    
+                  <div id="weather1" class="col-md-6 col1">
+                    <h5>Weather</h5>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Doloribus, soluta veritatis reiciendis ducimus ab temporibus
+                    rem dicta alias aut maxime consequuntur natus voluptas, modi
+                    quo aliquam in harum exercitationem recusandae.
+                  </div>
+                  <div id="status1" class="col-md-6 col2">
+                    <h5>Resort Status</h5>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Molestias dolorum adipisci, ea cum reprehenderit excepturi
+                    odit maxime soluta debitis repellendus deserunt dolor
+                    ratione voluptatibus magni, nobis necessitatibus recusandae,
+                    quia voluptates.
+                  </div>
                 </div>
               </div>
-          </div>
-          <!-- <div class="dropdown-menu">
+            </div>
+            <!-- <div class="dropdown-menu">
             <div class="container">
               <div class="row">
                 <div class="col-md-12" id="drop1">Weather- Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -97,206 +116,256 @@
               </div>
             </div>
           </div> -->
-        </div>
+          </div>
 
-        <br>
+          <br />
 
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" id="btn2" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
-            Resorts
-          </button>
-          <div class="dropdown-menu">
-            <div class="container">
-              <div class="row">
-                
+          <div class="dropdown">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              id="btn2"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Resorts
+            </button>
+            <div class="dropdown-menu">
+              <div class="container">
+                <div class="row">
                   <div id="weather2" class="col-md-6 col1">
                     <h5>Weather</h5>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus, soluta veritatis reiciendis ducimus ab temporibus rem dicta alias aut maxime consequuntur natus voluptas, modi quo aliquam in harum exercitationem recusandae.
-                      </div>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Doloribus, soluta veritatis reiciendis ducimus ab temporibus
+                    rem dicta alias aut maxime consequuntur natus voluptas, modi
+                    quo aliquam in harum exercitationem recusandae.
+                  </div>
                   <div id="status2" class="col-md-6 col2">
                     <h5>Resort Status</h5>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias dolorum adipisci, ea cum reprehenderit excepturi odit maxime soluta debitis repellendus deserunt dolor ratione voluptatibus magni, nobis necessitatibus recusandae, quia voluptates.
-                      </div>
-                  
-                  
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Molestias dolorum adipisci, ea cum reprehenderit excepturi
+                    odit maxime soluta debitis repellendus deserunt dolor
+                    ratione voluptatibus magni, nobis necessitatibus recusandae,
+                    quia voluptates.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <br>
+          <br />
 
-
-
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" id="btn3" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
-            Resorts
-          </button>
-          <div class="dropdown-menu">
-            <div class="container">
-              <div class="row">
-                
+          <div class="dropdown">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              id="btn3"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Resorts
+            </button>
+            <div class="dropdown-menu">
+              <div class="container">
+                <div class="row">
                   <div id="weather3" class="col-md-6 col1">
                     <h5>Weather</h5>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus, soluta veritatis reiciendis ducimus ab temporibus rem dicta alias aut maxime consequuntur natus voluptas, modi quo aliquam in harum exercitationem recusandae.
-                      </div>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Doloribus, soluta veritatis reiciendis ducimus ab temporibus
+                    rem dicta alias aut maxime consequuntur natus voluptas, modi
+                    quo aliquam in harum exercitationem recusandae.
+                  </div>
                   <div id="status3" class="col-md-6 col2">
                     <h5>Resort Status</h5>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias dolorum adipisci, ea cum reprehenderit excepturi odit maxime soluta debitis repellendus deserunt dolor ratione voluptatibus magni, nobis necessitatibus recusandae, quia voluptates.
-                      </div>
-                  
-                  
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Molestias dolorum adipisci, ea cum reprehenderit excepturi
+                    odit maxime soluta debitis repellendus deserunt dolor
+                    ratione voluptatibus magni, nobis necessitatibus recusandae,
+                    quia voluptates.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <br>
+          <br />
 
-
-
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" id="btn4" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
-            Resorts
-          </button>
-          <div class="dropdown-menu">
-            <div class="container">
-              <div class="row">
-                
+          <div class="dropdown">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              id="btn4"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Resorts
+            </button>
+            <div class="dropdown-menu">
+              <div class="container">
+                <div class="row">
                   <div id="weather4" class="col-md-6 col1">
                     <h5>Weather</h5>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus, soluta veritatis reiciendis ducimus ab temporibus rem dicta alias aut maxime consequuntur natus voluptas, modi quo aliquam in harum exercitationem recusandae.
-                      </div>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Doloribus, soluta veritatis reiciendis ducimus ab temporibus
+                    rem dicta alias aut maxime consequuntur natus voluptas, modi
+                    quo aliquam in harum exercitationem recusandae.
+                  </div>
                   <div id="status4" class="col-md-6 col2">
                     <h5>Resort Status</h5>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias dolorum adipisci, ea cum reprehenderit excepturi odit maxime soluta debitis repellendus deserunt dolor ratione voluptatibus magni, nobis necessitatibus recusandae, quia voluptates.
-                      </div>
-                  
-                  
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Molestias dolorum adipisci, ea cum reprehenderit excepturi
+                    odit maxime soluta debitis repellendus deserunt dolor
+                    ratione voluptatibus magni, nobis necessitatibus recusandae,
+                    quia voluptates.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <br>
+          <br />
 
-
-
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" id="btn5" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
-            Resorts
-          </button>
-          <div class="dropdown-menu">
-            <div class="container">
-              <div class="row">
-                
+          <div class="dropdown">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              id="btn5"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Resorts
+            </button>
+            <div class="dropdown-menu">
+              <div class="container">
+                <div class="row">
                   <div id="weather5" class="col-md-6 col1">
                     <h5>Weather</h5>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus, soluta veritatis reiciendis ducimus ab temporibus rem dicta alias aut maxime consequuntur natus voluptas, modi quo aliquam in harum exercitationem recusandae.
-                      </div>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Doloribus, soluta veritatis reiciendis ducimus ab temporibus
+                    rem dicta alias aut maxime consequuntur natus voluptas, modi
+                    quo aliquam in harum exercitationem recusandae.
+                  </div>
                   <div id="status5" class="col-md-6 col2">
                     <h5>Resort Status</h5>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias dolorum adipisci, ea cum reprehenderit excepturi odit maxime soluta debitis repellendus deserunt dolor ratione voluptatibus magni, nobis necessitatibus recusandae, quia voluptates.
-                      </div>
-                  
-                  
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Molestias dolorum adipisci, ea cum reprehenderit excepturi
+                    odit maxime soluta debitis repellendus deserunt dolor
+                    ratione voluptatibus magni, nobis necessitatibus recusandae,
+                    quia voluptates.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <br>
+          <br />
 
-
-
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" id="btn6" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
-            Resorts
-          </button>
-          <div class="dropdown-menu">
-            <div class="container">
-              <div class="row">
-                
+          <div class="dropdown">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              id="btn6"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Resorts
+            </button>
+            <div class="dropdown-menu">
+              <div class="container">
+                <div class="row">
                   <div id="weather6" class="col-md-6 col1">
                     <h5>Weather</h5>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus, soluta veritatis reiciendis ducimus ab temporibus rem dicta alias aut maxime consequuntur natus voluptas, modi quo aliquam in harum exercitationem recusandae.
-                      </div>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Doloribus, soluta veritatis reiciendis ducimus ab temporibus
+                    rem dicta alias aut maxime consequuntur natus voluptas, modi
+                    quo aliquam in harum exercitationem recusandae.
+                  </div>
                   <div id="status6" class="col-md-6 col2">
                     <h5>Resort Status</h5>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias dolorum adipisci, ea cum reprehenderit excepturi odit maxime soluta debitis repellendus deserunt dolor ratione voluptatibus magni, nobis necessitatibus recusandae, quia voluptates.
-                      </div>
-                  
-                  
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Molestias dolorum adipisci, ea cum reprehenderit excepturi
+                    odit maxime soluta debitis repellendus deserunt dolor
+                    ratione voluptatibus magni, nobis necessitatibus recusandae,
+                    quia voluptates.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <br>
+          <br />
 
-
-
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" id="btn7" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
-            Resorts
-          </button>
-          <div class="dropdown-menu">
-            <div class="container">
-              <div class="row">
-                
+          <div class="dropdown">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              id="btn7"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Resorts
+            </button>
+            <div class="dropdown-menu">
+              <div class="container">
+                <div class="row">
                   <div id="weather7" class="col-md-6 col1">
                     <h5>Weather</h5>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus, soluta veritatis reiciendis ducimus ab temporibus rem dicta alias aut maxime consequuntur natus voluptas, modi quo aliquam in harum exercitationem recusandae.
-                      </div>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Doloribus, soluta veritatis reiciendis ducimus ab temporibus
+                    rem dicta alias aut maxime consequuntur natus voluptas, modi
+                    quo aliquam in harum exercitationem recusandae.
+                  </div>
                   <div id="status7" class="col-md-6 col2">
                     <h5>Resort Status</h5>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias dolorum adipisci, ea cum reprehenderit excepturi odit maxime soluta debitis repellendus deserunt dolor ratione voluptatibus magni, nobis necessitatibus recusandae, quia voluptates.
-                      </div>
-                  
-                  
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Molestias dolorum adipisci, ea cum reprehenderit excepturi
+                    odit maxime soluta debitis repellendus deserunt dolor
+                    ratione voluptatibus magni, nobis necessitatibus recusandae,
+                    quia voluptates.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <br>
+          <br />
 
-
-
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" id="btn8" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
-            Resorts
-          </button>
-          <div class="dropdown-menu">
-            <div class="container">
-              <div class="row">
-                
+          <div class="dropdown">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              id="btn8"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Resorts
+            </button>
+            <div class="dropdown-menu">
+              <div class="container">
+                <div class="row">
                   <div id="weather8" class="col-md-6 col1">
                     <h5>Weather</h5>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus, soluta veritatis reiciendis ducimus ab temporibus rem dicta alias aut maxime consequuntur natus voluptas, modi quo aliquam in harum exercitationem recusandae.
-                      </div>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Doloribus, soluta veritatis reiciendis ducimus ab temporibus
+                    rem dicta alias aut maxime consequuntur natus voluptas, modi
+                    quo aliquam in harum exercitationem recusandae.
+                  </div>
                   <div id="status8" class="col-md-6 col2">
                     <h5>Resort Status</h5>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias dolorum adipisci, ea cum reprehenderit excepturi odit maxime soluta debitis repellendus deserunt dolor ratione voluptatibus magni, nobis necessitatibus recusandae, quia voluptates.
-                      </div>
-                  
-                  
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Molestias dolorum adipisci, ea cum reprehenderit excepturi
+                    odit maxime soluta debitis repellendus deserunt dolor
+                    ratione voluptatibus magni, nobis necessitatibus recusandae,
+                    quia voluptates.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <br>
+          <br />
 
-
-        <!-- <div id="btn1">
+          <!-- <div id="btn1">
         <button data-toggle="collapse" type="button" class="collapsible">Resort</button>
         </div>
         
@@ -332,28 +401,24 @@
                     <div id="btn8">
                       <button type="button" class="collapsible">Resort</button>
                       </div> -->
-
-
-
+        </div>
       </div>
     </div>
 
-
-  </div>
-
-
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-  </script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-  </script>
-  <script src="script.js"></script>
-  <script src="config.js"></script>
-  
-</body>
-
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="script.js"></script>
+    <script src="config.js"></script>
+  </body>
 </html>
