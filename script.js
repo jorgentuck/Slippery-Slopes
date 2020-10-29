@@ -157,16 +157,18 @@ $(document).ready(function () {
             var id = $('[data-name="' + resortObj[i].name + '"]').attr('id');
             id = id.substring(3, id.length);
 
-            // $('#drop' + id).text(resortObj[i].lifts.liftStatus[0]);
-            var status = $('<table><tbody id="' + resortObj[i].name + 'Status"><tr><th>Lift</th><th>Status</th></tr>');
-            var end = $('</tbody></table>')
+            var table = $('#table' + id);
+            var weatherConditions = $('#conditions' + id);
+            var weatherUpdate = $('#update' + id);
 
             $.each(resortObj[i].lifts.liftStatus, function (key, value) {
-                // console.log(key + ' is ' + value);
-                status.append('<tr><td>' + key + '</td><td>' + value + '</td></tr>')
+
+                table.after('<tr><td>' + key + '</td><td>' + value + '</td></tr>')
             });
-            console.log(status);
-            $('#status' + id).html(status + end);
+
+            weatherConditions.text('Conditions: ' + resortObj[i].weather.conditions);
+
+            weatherUpdate.text('Last Updated: ' + resortObj[i].weather.updateDate);
         }
     };
 
@@ -213,12 +215,12 @@ $(document).ready(function () {
         if (initLoad) {
             resortObj.sort(compareName)
             for (var i = 0; i < resortObj.length; i++) {
-                $('#btn' + (i + 1)).attr('data-name', resortObj[i].name).html('<button class="btn-outline-secondary favorite text-dark mr-3" data-state="false" data-fav="' + resortObj[i].name + '" id="favorite' + (i + 1) + '">&hearts;</button>' + resortObj[i].name.toString() + '<img id="' + resortObj[i].name + 'Icon" class="float-right" src="assets\\' + resortObj[i].name + '.png"height="25">');
+                $('#btn' + (i + 1)).attr('data-name', resortObj[i].name).html('<button class="btn-outline-secondary favorite text-dark mr-3" data-state="false" data-fav="' + resortObj[i].name + '" id="favorite' + (i + 1) + '">&hearts;</button>' + resortObj[i].name.toString() + '<img id="' + resortObj[i].name + 'Icon" class="float-right" src="assets\\' + resortObj[i].name.toLowerCase() + '.png"height="25">');
             }
         } else {
             resortObj.sort(compareDistance)
             for (var i = 0; i < resortObj.length; i++) {
-                $('#btn' + (i + 1)).attr('data-name', resortObj[i].name).html('<button class="btn-outline-secondary favorite text-dark mr-3" data-state="false" data-fav="' + resortObj[i].name + '" id="favorite' + (i + 1) + '">&hearts;</button>' + resortObj[i].name.toString() + ' - ' + resortObj[i].trafficText.toString() + '<img id="' + resortObj[i].name + 'Icon" class="float-right" src="assets\\' + resortObj[i].name + '.png"height="25">');
+                $('#btn' + (i + 1)).attr('data-name', resortObj[i].name).html('<button class="btn-outline-secondary favorite text-dark mr-3" data-state="false" data-fav="' + resortObj[i].name + '" id="favorite' + (i + 1) + '">&hearts;</button>' + resortObj[i].name.toString() + ' - ' + resortObj[i].trafficText.toString() + '<img id="' + resortObj[i].name + 'Icon" class="float-right" src="assets\\' + resortObj[i].name.toLowerCase() + '.png"height="25">');
                 traffic();
             }
         }

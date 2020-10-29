@@ -16,13 +16,10 @@ body {
 
 
 .jumbotron {
-    background-color:;
+    background-color: rgb(228, 227, 227);
     text-align: Center;
     font-style: italic; 
     font-family: 'Syne Mono', monospace;
-    background-image: url(assets\hamish-weir-h4LzdUvlWdA-unsplash); 
-	background-size: cover; 
-    background-repeat: no-repeat;
     padding-top: .5%; 
     padding-bottom: .5%; 
 }
@@ -50,7 +47,6 @@ img.map {
     border: 2px solid;
     background-color: rgb(32, 160, 32);
     font-size: 18px ;
-    height: 40px;
     border-radius: 6px;
     color: white;
     padding: 5px 5px;
@@ -99,6 +95,7 @@ img.map {
  .container {
        transition: padding 500;
  }
+
       
 .container-is-open {
     padding-top:200px;
@@ -175,3 +172,69 @@ img.map {
   
         
          
+
+  .dropdown-menu {
+    padding-left: 10px;
+    padding-right: 10px;
+    position: relative;
+    list-style-type: none;
+}
+  .navbar .dropdown-menu li {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+  }
+  .dropdown-menu > li > a {
+    color: #ffffff;
+    line-height: 75px;
+    padding: 3px;
+  }
+  .dropdown-menu > li > a:hover {
+    color: #333333 !important;
+  }
+  .dropdown-menu > li > a:hover {
+    color: #ffffff;
+    background-color: #337ab7;
+  }
+  .m-pub {
+    display: inline-block;
+    margin: 3px 40px 0;
+    font-size: 13px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    color: white;
+    -webkit-transition: none;
+    -moz-transition: none;
+    -ms-transition: none;
+    -o-transition: none;
+    transition: none;
+    position: relative;
+  }
+  .m-pub:after,
+  .m-pub:focus {
+    color: #ffffff;
+    background-color: #337ab7;
+  }
+  .dropdown-menu li .m-pub:hover:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    margin-left: -10px;
+    margin-top: 55px;
+    border-left: 0;
+    border-bottom: 17px solid transparent;
+    border-top: 17px solid transparent;
+    border-left: 14px solid #333333;
+    transform: rotate(-90deg);
+    background: none;
+  }
+  nav.navbar.open {
+    margin-bottom: 120px;
+  }
+
+  .table {
+    margin: auto;
+    width: 50% !important; 
+ }
+
