@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
 
     // Variables
@@ -242,6 +243,10 @@ $(document).ready(function () {
         getLocation();
     });
 
+    $("container.dropdown").click(function() {
+        $("dropdown" ).toggleClass( "open");
+     });
+
     $('.dropdown').on('click', '.favorite', function (event) {
         event.stopPropagation();
         if ($(this).attr('data-state') === 'false') {
@@ -258,4 +263,5 @@ $(document).ready(function () {
     // runs after the page loads
     liftieAPI(skiResorts);
 
+   
 });
