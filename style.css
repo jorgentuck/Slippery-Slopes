@@ -16,13 +16,10 @@ body {
 
 
 .jumbotron {
-    background-color:;
+    background-color: rgb(228, 227, 227);
     text-align: Center;
     font-style: italic; 
     font-family: 'Syne Mono', monospace;
-    background-image: url(assets\hamish-weir-h4LzdUvlWdA-unsplash); 
-	background-size: cover; 
-    background-repeat: no-repeat;
     padding-top: .5%; 
     padding-bottom: .5%; 
 }
@@ -55,7 +52,6 @@ img.map {
     border: 2px solid;
     background-color: rgb(32, 160, 32);
     font-size: 18px ;
-    height: 40px;
     border-radius: 6px;
     color: white;
     padding: 5px 5px;
