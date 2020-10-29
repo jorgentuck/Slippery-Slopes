@@ -180,3 +180,8 @@ img.map {
   nav.navbar.open {
     margin-bottom: 120px;
   }
+
+  .table {
+    margin: auto;
+    width: 50% !important; 
+ }

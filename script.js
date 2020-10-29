@@ -155,17 +155,18 @@ $(document).ready(function () {
         for (var i = 0; i < resortObj.length; i++) {
             var id = $('[data-name="' + resortObj[i].name + '"]').attr('id');
             id = id.substring(3, id.length);
-
+            var resortId = [{
+                name:resortObj[i].name,
+                id: id
+            }];
+            var table = $('#table' + id);
             // $('#drop' + id).text(resortObj[i].lifts.liftStatus[0]);
-            var status = $('<table><tbody id="' + resortObj[i].name + 'Status"><tr><th>Lift</th><th>Status</th></tr>');
-            var end = $('</tbody></table>')
-
             $.each(resortObj[i].lifts.liftStatus, function (key, value) {
                 // console.log(key + ' is ' + value);
-                status.append('<tr><td>' + key + '</td><td>' + value + '</td></tr>')
+                table.after('<tr><td>' + key + '</td><td>' + value + '</td></tr>')
             });
-            console.log(status);
-            $('#status' + id).html(status + end);
+            console.log(table);
+            // $('#status' + id).html(status + end);
         }
     };
 
