@@ -165,7 +165,7 @@ $(document).ready(function () {
                 table.after('<tr><td>' + key + '</td><td>' + value + '</td></tr>')
             });
 
-            weatherConditions.text('Condtions: ' + resortObj[i].weather.conditions);
+            weatherConditions.text('Conditions: ' + resortObj[i].weather.conditions);
 
             weatherUpdate.text('Last Updated: ' + resortObj[i].weather.updateDate);
         }
