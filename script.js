@@ -155,18 +155,19 @@ $(document).ready(function () {
         for (var i = 0; i < resortObj.length; i++) {
             var id = $('[data-name="' + resortObj[i].name + '"]').attr('id');
             id = id.substring(3, id.length);
-            var resortId = [{
-                name:resortObj[i].name,
-                id: id
-            }];
+
             var table = $('#table' + id);
-            // $('#drop' + id).text(resortObj[i].lifts.liftStatus[0]);
+            var weatherConditions = $('#conditions' + id);
+            var weatherUpdate = $('#update' + id);
+
             $.each(resortObj[i].lifts.liftStatus, function (key, value) {
-                // console.log(key + ' is ' + value);
+
                 table.after('<tr><td>' + key + '</td><td>' + value + '</td></tr>')
             });
-            console.log(table);
-            // $('#status' + id).html(status + end);
+
+            weatherConditions.text('Condtions: ' + resortObj[i].weather.conditions);
+
+            weatherUpdate.text('Last Updated: ' + resortObj[i].weather.updateDate);
         }
     };
 
