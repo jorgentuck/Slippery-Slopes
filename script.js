@@ -213,12 +213,12 @@ $(document).ready(function () {
         if (initLoad) {
             resortObj.sort(compareName)
             for (var i = 0; i < resortObj.length; i++) {
-                $('#btn' + (i + 1)).attr('data-name', resortObj[i].name).html('<button class="btn-outline-secondary favorite text-dark mr-3" data-state="false" data-fav="' + resortObj[i].name + '" id="favorite' + (i + 1) + '">&hearts;</button>' + resortObj[i].name.toString() + '<img id="' + resortObj[i].name + 'Icon" class="float-right" src="assets\\' + resortObj[i].name + '.png"height="25">');
+                $('#btn' + (i + 1)).attr('data-name', resortObj[i].name).html('<button class="btn-outline-secondary favorite text-dark mr-3" data-state="false" data-fav="' + resortObj[i].name + '" id="favorite' + (i + 1) + '">&hearts;</button>' + resortObj[i].name.toString() + '<img id="' + resortObj[i].name + 'Icon" class="float-right" src="assets\\' + resortObj[i].name.toLowerCase() + '.png"height="25">');
             }
         } else {
             resortObj.sort(compareDistance)
             for (var i = 0; i < resortObj.length; i++) {
-                $('#btn' + (i + 1)).attr('data-name', resortObj[i].name).html('<button class="btn-outline-secondary favorite text-dark mr-3" data-state="false" data-fav="' + resortObj[i].name + '" id="favorite' + (i + 1) + '">&hearts;</button>' + resortObj[i].name.toString() + ' - ' + resortObj[i].trafficText.toString() + '<img id="' + resortObj[i].name + 'Icon" class="float-right" src="assets\\' + resortObj[i].name + '.png"height="25">');
+                $('#btn' + (i + 1)).attr('data-name', resortObj[i].name).html('<button class="btn-outline-secondary favorite text-dark mr-3" data-state="false" data-fav="' + resortObj[i].name + '" id="favorite' + (i + 1) + '">&hearts;</button>' + resortObj[i].name.toString() + ' - ' + resortObj[i].trafficText.toString() + '<img id="' + resortObj[i].name + 'Icon" class="float-right" src="assets\\' + resortObj[i].name.toLowerCase() + '.png"height="25">');
                 traffic();
             }
         }
