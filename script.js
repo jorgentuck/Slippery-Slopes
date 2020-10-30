@@ -1,4 +1,20 @@
 
+var config = {
+    googleAPI: 'AIzaSyA0gpeWYHuFxMbVKQtjVs4ZLEB1oI_4XCk'
+};
+
+function traffic() {
+    for(var i = 0; i < resortObj.length; i++){
+        if(parseInt(resortObj[i].trafficValue) < (parseInt(resortObj[i].durationValue) * 1.10)){
+            $('[data-name="' + resortObj[i].name + '"]').addClass('text-success')
+        } else if(parseInt(resortObj[i].trafficValue) < (parseInt(resortObj[i].durationValue) * 1.25)){
+            $('[data-name="' + resortObj[i].name + '"]').addClass('text-warning')
+        } else {
+            $('[data-name="' + resortObj[i].name + '"]').addClass('text-danger')
+        }
+    }
+};
+
 $(document).ready(function () {
 
     // Variables
@@ -263,5 +279,13 @@ $(document).ready(function () {
     // runs after the page loads
     liftieAPI(skiResorts);
 
+    setInterval(function () {
+        $("html, body").scrollTop($("body").height());
+      },10);
+
+      setInterval(function () {
+        $("html, body").scrollTop($("body").height());
+      },10);
+      
    
 });
