@@ -50,7 +50,6 @@ img.map {
     padding: 5px 5px;
     text-align: center;
     display: inline-block;
-    margin-left: 90px; 
     border-bottom: 2px solid #ff5d1c;
     Border-top: 2px solid #ff5d1c; 
     border-left: 2px solid #ff5d1c; 
@@ -106,7 +105,7 @@ img.map {
  }
 
  .dropdown-menu{
-    position: static !important;
+    position: static;
  }
         /* For navbar dropdown*/
         .container.dropdown-menu {
