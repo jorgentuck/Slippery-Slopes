@@ -20,6 +20,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     color: rgb(0, 0, 0);
+    overflow: scroll; 
 }
 
 img.map {
@@ -50,7 +51,7 @@ img.map {
     padding: 5px 5px;
     text-align: center;
     display: inline-block;
-    margin-left: 90px; 
+    margin-left: 0px; 
     border-bottom: 2px solid #ff5d1c;
     Border-top: 2px solid #ff5d1c; 
     border-left: 2px solid #ff5d1c; 
@@ -67,11 +68,15 @@ img.map {
     text-align: left;
     background-color: rgb(160, 160, 160);
     display: inline-block;
-    position:absolute; left:80px; top:2px; 
+    position:static; left:150px; top:2px; 
+    z-index: 9999; 
+    position: fixed; 
 }
+
  .btn-group {
      width: 100%;
      text-align: left;
+     margin-left: 200px; 
      
  }
 
@@ -82,10 +87,13 @@ img.map {
 
  .col1 {
      text-align: center;
+     padding-left: 10px; 
+
  }
 
  .col2 {
      text-align: center;
+     padding-right: 25px; 
 
  }
 
@@ -97,6 +105,7 @@ img.map {
 
  .container {
        transition: padding 500;
+       padding: left 200px; 
  }
 
       
@@ -105,62 +114,61 @@ img.map {
     position: relative; 
  }
 
- .dropdown-menu{
-    position: static !important;
- }
-        /* For navbar dropdown*/
-        .container.dropdown-menu {
-            width: 100%;
-            height: 120px;
-            left: 0;
-            z-index: 10000;
-            text-align: center;
-            position: absolute;
-            list-style-type:none;
-            background-color: #337
-          }
-  
-          .dropdown-menu {
-            width: 100%; 
-            padding-left:10px;
-            padding-right:10px;
-            position:absolute;
-            list-style-type:none;
-            border-top: 2px solid #ff5d1c;
-            border-bottom: 2px solid #ff5d1c;
-            border-left: 2px solid #ff5d1c;
-            border-right: 2px solid #ff5d1c;
-            background-color: #337ab7;
-            overflow: hidden; 
-            min-height: 200px; 
-          }
 
-        .container {
-            font-size: 13px;
-            font-weight: 400;
-            letter-spacing: .14em;
-            color: white;
-            position: relative;
-          }
-        .row:after, 
-        .row:focus {
-            color: #ffffff;
-            background-color: #337ab7;
-        }
-        .dropdown-menu .row:hover:after {
-            position: absolute;
-            left: 50%;
-            margin-left: -10px;
-            border-left: 0;
-            border-bottom: 17px solid transparent;
-            border-top: 17px solid transparent;
-            border-left: 14px solid #333333;
-            transform: rotate(-90deg);
-            background: none;
-        }
-        .container.dropdown-menu {
-            margin-bottom: 120px;
-          }
+  .container.dropdown-menu {
+    width: 100%;
+    height: 120px;
+    left: 0;
+    text-align: center;
+    position: absolute; 
+    background-color: #337; 
+  }
+  /* controls the physical dropdown menu */ 
+  .dropdown-menu {
+    width: 100%; 
+    padding-left:25px;
+    padding-right:25px;
+    position:relative; 
+    z-index:9999; 
+    border-top: 2px solid #ff5d1c;
+    border-bottom: 2px solid #ff5d1c;
+    border-left: 2px solid #ff5d1c;
+    border-right: 2px solid #ff5d1c;
+    background-color: #337ab7; 
+    min-height: 200px; 
+    max-height: 300px; 
+    overflow: scroll;  
+    overflow-x: hidden; 
+   }
+
+  .container {
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: .14em;
+    color: white;
+    position: relative;
+    padding-bottom: 50px; 
+    min-height: 50px; 
+    max-height: 25px; 
+    position: absolute;  
+
+  }
+  .row:after, 
+  .row:focus {
+    color: #ffffff;
+     background-color: #337ab7;
+  }
+  .dropdown-menu .row:hover:after {
+    position: absolute;
+    left: 50%;
+    margin-left: -10px;
+    border-left: 0;
+    border-bottom: 17px solid transparent;
+    border-top: 17px solid transparent;
+    border-left: 14px solid #333333;
+    transform: rotate(-90deg);
+    background: none;
+  }
 
   .table {
     margin: auto;

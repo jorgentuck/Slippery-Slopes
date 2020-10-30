@@ -259,8 +259,8 @@ $(document).ready(function () {
         getLocation();
     });
 
-    $("container.dropdown").click(function() {
-        $("dropdown" ).toggleClass( "open");
+    $(".dropdown-menu").click(function() {
+        $(".container" ).toggleClass( "open");
      });
 
     $('.dropdown').on('click', '.favorite', function (event) {
@@ -279,13 +279,5 @@ $(document).ready(function () {
     // runs after the page loads
     liftieAPI(skiResorts);
 
-    setInterval(function () {
-        $("html, body").scrollTop($("body").height());
-      },10);
-
-      setInterval(function () {
-        $("html, body").scrollTop($("body").height());
-      },10);
       
-   
 });
