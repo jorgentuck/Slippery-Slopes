@@ -358,6 +358,11 @@ $(document).ready(function () {
         // function to get the users location
         getLocation();
     });
+    //dropdown click
+    $(".dropdown-menu").click(function() {
+        $(".container" ).toggleClass( "open");
+     });
+
     // favorite button click
     $('.dropdown').on('click', '.favorite', function (event) {
         // stop the propagation so the drop down doesn't open
@@ -382,12 +387,4 @@ $(document).ready(function () {
 
     // runs after the page loads
     liftieAPI(skiResorts);
-    // not sure - Juan can you add this comment????
-    setInterval(function () {
-        $("html, body").scrollTop($("body").height());
-    }, 10);
-    // not sure - Juan can you add this comment????
-    setInterval(function () {
-        $("html, body").scrollTop($("body").height());
-    }, 10);
 });
