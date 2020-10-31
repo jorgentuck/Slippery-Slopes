@@ -105,8 +105,8 @@ $(document).ready(function () {
     function directionsAPI(arr) {
         // update bool to false for rendering purposes
         initLoad = false;
-        // key in a git ignore file - needs to be added when this goes live
-        var apiKey = config.googleAPI;
+        // API key
+        var apiKey = 'AIzaSyDeFm4EuqqCzXL2BDWvquYNWPVXklpi2fI';
         // loop through the array provided to make the API calls
         for (var i = 0; i < arr.length; i++) {
             // url for API call
