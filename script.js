@@ -109,10 +109,8 @@ $(document).ready(function () {
         var apiKey = config.googleAPI;
         // loop through the array provided to make the API calls
         for (var i = 0; i < arr.length; i++) {
-            // url for local testing to avoid cors errors
+            // url for API call
             var queryURL = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/directions/json?origin=' + userLat + ',' + userLon + '&destination=' + arr[i].lat + ',' + arr[i].lon + '&departure_time=now&key=' + apiKey
-            // url for live
-            // var queryURL = 'https://maps.googleapis.com/maps/api/directions/json?origin=' + userLat + ',' + userLon + '&destination=' + resortObj[i].lat + ',' + resortObj[i].lon + '&departure_time=now&key=' + apiKey
 
             $.ajax({
                 url: queryURL,
@@ -260,11 +258,10 @@ $(document).ready(function () {
     function liftieAPI(arr) {
         // loop through the array provided to make the API calls
         for (var i = 0; i < arr.length; i++) {
+            // url for api call
+            var queryURL = "https://cors-anywhere.herokuapp.com/https://liftie.info/api/resort/" + arr[i].name
             $.ajax({
-                // url for local testing to avoid cors errors
-                // url: "https://cors-anywhere.herokuapp.com/https://liftie.info/api/resort/" + arr[i].name,
-                // url for live
-                url: "https://liftie.info/api/resort/" + arr[i].name,
+                url: queryURL,
                 method: "GET",
             }).then(function (response) {
                 // populate object and push to the array
@@ -301,7 +298,7 @@ $(document).ready(function () {
     // what to do when all running ajax calls finish
     $(document).ajaxStop(function () {
         // timeout is for testing because of the way the CORs anywhere proxy triggers the ajaxStop before it is actually complete - remove for live site
-        // setTimeout(function () {
+        setTimeout(function () {
             // call init function
             init();
             // if this is the first loading of the page
@@ -353,7 +350,7 @@ $(document).ready(function () {
             // function to populate the lift statuses - called with both resort arrays
             resortStats(favArr);
             resortStats(resortObj);
-        // }, 1);
+        }, 0);
     });
 
     // click events
