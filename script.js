@@ -45,6 +45,9 @@ $(document).ready(function () {
     var userLon = 0;
     // bool to track initial loading for sorting
     var initLoad = true;
+    // traffic variables
+    var goodTraffic = 1.1;
+    var middleTraffic = 1.25;
 
     // Functions
     // Initial function to seperate resort data into 2 arrays based on the favorite bool
@@ -66,47 +69,6 @@ $(document).ready(function () {
                     }
                 }
             }
-        }
-    };
-    // calls the Liftie API and stores results
-    function liftieAPI(arr) {
-        // loop through the array provided to make the API calls
-        for (var i = 0; i < arr.length; i++) {
-            $.ajax({
-                // url for local testing to avoid cors errors
-                url: "https://cors-anywhere.herokuapp.com/https://liftie.info/api/resort/" + arr[i].name,
-                // url for live
-                // url: "https://liftie.info/api/resort/" + arr[i].name,
-                method: "GET",
-            }).then(function (response) {
-                // populate object and push to the array
-                resortObj.push({
-                    // resort name
-                    name: response.name,
-                    // resort latitude
-                    lat: response.ll[1],
-                    // resort longitude
-                    lon: response.ll[0],
-                    weather: {
-                        // weather conditions - for future development
-                        conditions: response.weather.conditions,
-                        // date weather was updated
-                        updateDate: response.weather.date,
-                        // weather conditions in text format
-                        text: response.weather.text
-                    },
-                    lifts: {
-                        // open ski lifts - for future development
-                        open: response.lifts.open,
-                        // closed ski lifts - for future development
-                        closed: response.lifts.closed,
-                        // all ski lifts with statuses
-                        liftStatus: response.lifts.status
-                    },
-                    // set favortie bool to false
-                    favorite: false
-                })
-            });
         }
     };
 
@@ -226,10 +188,10 @@ $(document).ready(function () {
         // loop through the provided array to compare time with traffic to the normal duration
         for (var i = 0; i < arr.length; i++) {
             // time with traffic vs normal duration + 10% set text color to green
-            if (parseInt(arr[i].trafficValue) < (parseInt(arr[i].durationValue) * 1.1)) {
+            if (parseInt(arr[i].trafficValue) < (parseInt(arr[i].durationValue) * goodTraffic)) {
                 $('[data-name="' + arr[i].name + '"]').addClass('text-success')
                 // time with traffic vs normal duration + 25% set text color to yellow
-            } else if (parseInt(arr[i].trafficValue) < (parseInt(arr[i].durationValue) * 1.25)) {
+            } else if (parseInt(arr[i].trafficValue) < (parseInt(arr[i].durationValue) * middleTraffic)) {
                 $('[data-name="' + arr[i].name + '"]').addClass('text-warning')
                 // time with traffic > normal duration + 25% set text color to red
             } else {
@@ -294,10 +256,52 @@ $(document).ready(function () {
         }
     };
 
+    // calls the Liftie API and stores results
+    function liftieAPI(arr) {
+        // loop through the array provided to make the API calls
+        for (var i = 0; i < arr.length; i++) {
+            $.ajax({
+                // url for local testing to avoid cors errors
+                // url: "https://cors-anywhere.herokuapp.com/https://liftie.info/api/resort/" + arr[i].name,
+                // url for live
+                url: "https://liftie.info/api/resort/" + arr[i].name,
+                method: "GET",
+            }).then(function (response) {
+                // populate object and push to the array
+                resortObj.push({
+                    // resort name
+                    name: response.name,
+                    // resort latitude
+                    lat: response.ll[1],
+                    // resort longitude
+                    lon: response.ll[0],
+                    weather: {
+                        // weather conditions - for future development
+                        conditions: response.weather.conditions,
+                        // date weather was updated
+                        updateDate: response.weather.date,
+                        // weather conditions in text format
+                        text: response.weather.text
+                    },
+                    lifts: {
+                        // open ski lifts - for future development
+                        open: response.lifts.open,
+                        // closed ski lifts - for future development
+                        closed: response.lifts.closed,
+                        // all ski lifts with statuses
+                        liftStatus: response.lifts.status
+                    },
+                    // set favortie bool to false
+                    favorite: false
+                })
+            });
+        }
+    };
+
     // what to do when all running ajax calls finish
     $(document).ajaxStop(function () {
         // timeout is for testing because of the way the CORs anywhere proxy triggers the ajaxStop before it is actually complete - remove for live site
-        setTimeout(function () {
+        // setTimeout(function () {
             // call init function
             init();
             // if this is the first loading of the page
@@ -335,13 +339,13 @@ $(document).ready(function () {
                     // find matching resort on the resortObj array and update the favorite button to match the favorite styling
                     for (var k = 0; k < resortObj.length; k++) {
                         if (skiResorts[j].name.slice(-4).toLowerCase() === resortObj[k].name.slice(-4).toLowerCase()) {
-                            $('[data-fav="' + resortObj[k].name + '"]').removeClass('text-dark').addClass('text-danger active');
+                            $('[data-fav="' + resortObj[k].name + '"]').removeClass('text-dark').addClass('text-danger active').attr('data-state', 'true');
                         }
                     }
                     // find matching resort on the favArr array and update the favorite button to match the favorite styling
                     for (var k = 0; k < favArr.length; k++) {
                         if (skiResorts[j].name.slice(-4).toLowerCase() === favArr[k].name.slice(-4).toLowerCase()) {
-                            $('[data-fav="' + favArr[k].name + '"]').removeClass('text-dark').addClass('text-danger active');
+                            $('[data-fav="' + favArr[k].name + '"]').removeClass('text-dark').addClass('text-danger active').attr('data-state', 'true');
                         }
                     }
                 }
@@ -349,7 +353,7 @@ $(document).ready(function () {
             // function to populate the lift statuses - called with both resort arrays
             resortStats(favArr);
             resortStats(resortObj);
-        }, 3000);
+        // }, 1);
     });
 
     // click events
@@ -359,9 +363,9 @@ $(document).ready(function () {
         getLocation();
     });
     //dropdown click
-    $(".dropdown-menu").click(function() {
-        $(".container" ).toggleClass( "open");
-     });
+    $(".dropdown-menu").click(function () {
+        $(".container").toggleClass("open");
+    });
 
     // favorite button click
     $('.dropdown').on('click', '.favorite', function (event) {
