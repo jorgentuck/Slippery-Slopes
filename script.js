@@ -264,7 +264,6 @@ $(document).ready(function () {
                 url: queryURL,
                 method: "GET",
             }).then(function (response) {
-                console.log(response);
                 // populate object and push to the array
                 resortObj.push({
                     // resort name
