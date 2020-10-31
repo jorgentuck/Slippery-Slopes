@@ -359,7 +359,7 @@ $(document).ready(function () {
         getLocation();
     });
     //dropdown click
-    $(".dropdown-menu").click(function() {
+    $(".dropdown-menu").click(function (event) {
         $(".container" ).toggleClass( "open");
      });
 

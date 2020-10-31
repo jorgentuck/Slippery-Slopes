@@ -5,6 +5,7 @@
   font-family: 'Syne Mono', monospace;
   padding-top: .5%; 
   padding-bottom: .5%; 
+  border-bottom: 2px solid #ff5d1c; 
 }
 
 body {
@@ -77,12 +78,12 @@ img.map {
      width: 100%;
      text-align: left;
      margin-left: 200px; 
-     
+
  }
 
  .btn {
      width: 100%;
-     text-align: left;
+     text-align: left; 
  }
 
  .col1 {
