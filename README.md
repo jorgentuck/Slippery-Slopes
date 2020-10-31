@@ -34,4 +34,4 @@
 
 - - -
 
-© 2020 Jorgen Tuck
+© 2020 Jorgen Tuck, Derrick deVilliers, Juan Boza, Chance Ewell
