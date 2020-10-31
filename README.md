@@ -2,15 +2,15 @@
 
 
 ## Requirements
-* Build a simple weather application
-* This app will run in the browser
-* Use the OpenWeather API to retrieve weather data for cities
-* Show current and future conditions for a searched city and add it to the search history
-* Display city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
-* Use color to show if the UV index is favorable, moderate, or severe
-* Display 5-day forecast with the date, an icon representation of weather conditions, the temperature, and the humidity
-* Click on a city in the search history and show current and future conditions for that city
-* On subsequent opens display last searched city forecast
+* 
+* 
+* 
+* 
+* 
+* 
+* 
+* 
+* 
 
 ## Files & directories
 
