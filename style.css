@@ -85,27 +85,9 @@ img.map {
      text-align: left;
  }
 
- .col1 {
-     text-align: center;
-     padding-left: 10px; 
-
- }
-
- .col2 {
-     text-align: center;
-     padding-right: 25px; 
-
- }
-
- .containerTop {
-     margin: 10px 75px;
-     padding: 15px;
-
- }
-
  .container {
        transition: padding 500;
-       padding: left 200px; 
+       /* padding: left 200px;  */
  }
 
       
@@ -125,8 +107,8 @@ img.map {
   /* controls the physical dropdown menu */ 
   .dropdown-menu {
     width: 100%; 
-    padding-left:25px;
-    padding-right:25px;
+    /* padding-left:25px;
+    padding-right:25px; */
     position:relative; 
     z-index:9999; 
     border-top: 2px solid #ff5d1c;
